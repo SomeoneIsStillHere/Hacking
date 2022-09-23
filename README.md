@@ -9,3 +9,5 @@
     ✔️  -  Fast
     ✔️  -  successfully makes and initializes id_rsa
     ✔️  -  the attack needs to know the shh username
+
+    [!] Read all the REM comments [!]
